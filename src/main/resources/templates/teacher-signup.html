@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}"/>
+    <title>سامانه آنلاین آزمون یار</title>
+</head>
+<body>
+<div class="container-fluid p-0 m-0">
+    <div class="signup-top-navigation low-brightness row d-flex justify-content-around p-3 m-0">
+        <div class="">
+            <h3>سامانه آنلاین</h3>
+        </div>
+        <div class="">
+            <div id="teacher-signup" class="top-links-inner-container">
+                <img th:src="@{/img/profile.svg}"/>
+                &nbsp ثبت نام
+            </div>
+            <div id="student-signup" class="top-links-inner-container">
+                <img th:src="@{/img/enter.svg}"/>
+                &nbsp ورود
+            </div>
+        </div>
+    </div>
+    <div class="row p-0 m-0 slider-container d-flex justify-content-center">
+        <div class="d-flex flex-column justify-content-center align-self-center signup-form-inner-container">
+            <img class="signup-small-logo" th:src="@{/img/logo-small.jpeg}"/>
+            <form th:form th:action="@{/signup/teacher-signup}" th:object="${teacher}" method="post">
+                <div class="input-container">
+                    <img th:src="@{/img/profile.svg}"/>
+                    <input placeholder="نام کاربری" class="form-input" type="text" th:field="*{username}"/>
+                </div>
+                <div class="input-container">
+                    <img th:src="@{/img/lock.svg}"/>
+                    <input placeholder="رمز عبور" class="form-input" type="text" th:field="*{password}"/>
+                </div>
+                <div class="input-container">
+                    <img th:src="@{/img/phone.svg}"/>
+                    <input placeholder="شماره تلفن همراه" class="form-input" type="text" th:field="*{phoneNumber}"/>
+                </div>
+                <div class="input-container">
+                    <input class="signup-submit-button" type="submit" value="ثبت نام"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+</body>
+</html>

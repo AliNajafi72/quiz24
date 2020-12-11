@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}"/>
+    <title>آزمون آنلاین - آزمون ساز - بانک سوالات | سامانه آنلاین آزمون یار</title>
+</head>
+<body>
+<div class="container-fluid p-0 m-0">
+    <div class="row p-0 m-0">
+        <img th:src="@{/img/top-banner.png}" alt="top banner" width="100%"/>
+    </div>
+    <div class="row p-0 m-0 slider-container d-flex justify-content-center">
+        <div class="top-slider-inner-container-right w-50 d-flex justify-content-end">
+            <div class="align-self-center">
+                <h3 class="top-slider-text">سامانه آنلاین آزمون یار</h3>
+                <p class="top-slider-text">
+                    بزرگترین ارائه دهنده خدمات آزمون آنلاین ویژه دانش آموزان، دبیران، مشاوران و مدیران مدارس
+                </p>
+                <p class="top-slider-text">
+                    ارائه دهنده جامع ترین بانک سوالات تستی، تشریحی و درسنامه برای تمامی دروس
+                </p>
+                <p class="top-slider-text">
+                    آزمون ساز برتر کشور با قابلیت برگزاری آزمون های تشریحی، تستی و ترکیبی
+                </p>
+                <p class="top-slider-text">
+                    ارائه دهنده خدمات برگزاری کلاس آنلاین (کلاس مجازی)
+                </p>
+                <p class="top-slider-text">
+                    به همراه پنل تکلیف آنلاین با قابلیت های منحصربفرد و امکان ارسال و دریافت فایل
+                </p>
+                <div class="slider-button-container">
+                    <a class="slider-button-learn-more rounded-pill" href="#">بیشتر بخوانید</a>
+                    <a class="slider-button-signup rounded-pill" href="#">ثبت نام</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="w-50 top-slider-inner-container-left d-flex justify-content-center">
+            <!-- Slider main container -->
+            <div class="swiper-container w-75 h-75 align-self-end">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="w-100 h-100" th:src="@{/img/slider-one.png}"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="w-100 h-100" th:src="@{/img/slider-two.png}"/>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <div class="top-navigation-container d-flex justify-content-around">
+            <div class="top-navigation-inner-container align-self-center">
+                <a class="top-navigation-links" href="#">صفحه اصلی</a>
+                <a class="top-navigation-links" href="#">بانک سوال و آزمون ساز</a>
+                <a class="top-navigation-links" href="#">پنل برگزاری آزمون آنلاین</a>
+                <a class="top-navigation-links" href="#">آزمون ویژه دانش آموزی</a>
+                <a class="top-navigation-links" href="#">آزمون تشریحی</a>
+                <a class="top-navigation-links" href="#">کلاس مجازی</a>
+                <a class="top-navigation-links" href="#">تکلیف آنلاین</a>
+            </div>
+            <div class="align-self-center">
+                <a href="#" class="top-navigation-login rounded-pill">ورود</a>
+                <a href="#" class="top-navigation-signup rounded-pill">ثبت نام</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+<script>
+    let mySwiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        autoplay: {
+            delay: 5000,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    })
+</script>
+</body>
+</html>

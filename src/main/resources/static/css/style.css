@@ -1,0 +1,326 @@
+﻿@import url(fontiran.css); /* لینک فایلی که وظیفه بارگذاری فونت ها را برعهده دارد */
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: IRANSans !important;
+	font-weight: 300;
+	direction: rtl;
+	background-color: white;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6,input, textarea {
+	font-family: IRANSans !important;
+}
+h1 {
+	font-weight: bold;
+}
+.wrapper {
+	max-width: 900px;
+	margin: 0 auto;
+}
+.ltr {
+	direction: ltr;
+}
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-small {
+	font-size: 0.8em;
+}
+.text-xsmall {
+	font-size: 0.6em;
+}
+.text-large {
+	font-size: 1.2em;
+}
+.text-xlarge {
+	font-size: 1.4em;
+}
+.text-underline {
+	text-decoration:underline;
+}
+.text-ultralight {
+	font-weight: 200;
+}
+.text-light {
+	font-weight: 300;
+}
+.text-regular {
+	font-weight: normal;
+}
+.text-medium {
+	font-weight: 500;
+}
+.text-bold {
+	font-weight: bold;
+}
+.text-black {
+	font-weight: 900;
+}
+blockquote {
+	font-weight: 500;
+	padding: 10px;
+	border: 1px dashed #666666;
+}
+
+.mainbox {
+	width: 100%;
+	background-color: #EFEFEF;
+	display: table;
+	margin-bottom: 30px;
+	border-right: 8px solid #FFFF33;
+}
+
+.mainboxnegativ {
+	width: 100%;
+	background-color: #000000;
+	display: table;
+	margin-bottom: 30px;
+	border-right: 8px solid #FFFF33;
+	color: #F9F9F9;
+}
+
+.mainbox2 {
+	font-size: 1em;
+	width: 90%;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.mainbox3 {
+	width: 100%;
+	background-color: #b8b8b8;
+	display: table;
+	margin-bottom: 30px;
+	border-right: 8px solid #bd70ff;
+}
+
+.mainbox2negativ {
+	font-size: 1em;
+	color: #F9F9F9;
+	background-color: #000000;
+	padding-right: 20px;
+}
+
+.farsiparagraph {
+	font-size: 1em;
+	width: 47%;
+	float:right;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+.englishparagraph {
+	font-size: 1em;
+	width: 47%;
+	float: left;
+	direction:ltr;
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+
+}
+.rightbox {
+	width: 60%;
+	padding-right: 20px;
+	padding-left: 5px;
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 0px;
+	min-width: 0px;
+	background-color: #F7F7F7;
+
+}
+
+.titelbox {
+	width: 60%;
+	padding-right: 25px;
+	padding-left: 0px;
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 0px;
+	min-width: 0px;
+	background-color: #F2F2F2;
+	color: #4B4B4B;
+}
+
+
+.lefttbox {
+	
+	padding-right: 20px;
+	padding-left: 4px;
+	float: right;
+	margin-bottom: 10px;
+	min-width: 0px;
+}
+
+.alphabet {
+	width: 35%;
+	float: left;
+	font-size: 21em;
+	text-align: center;
+	font-weight: 500;
+	color: #999999;
+}
+
+.alphabet2 {
+	width: 35%;
+	float: left;
+	direction: ltr;
+	font-size: 1.6em;
+	text-align: left;
+	font-weight: 500;
+	color: #333333;
+	margin-top: 100px;
+}
+.footer {
+	font-weight: 300;
+	font-size: 0.7em;
+	text-align: center;
+	direction: ltr;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.slider-container {
+	height: 800px;
+	background-image: url('../img/page-top-background.jpg');
+	background-repeat:no-repeat;
+	position: relative;
+}
+
+.top-slider-inner-container-right {
+}
+
+.top-slider-text {
+	text-align: right;
+	display: block;
+	color: white;
+	font-weight: bold;
+}
+
+.top-slider-inner-container-left {
+}
+
+.slider-button-learn-more,
+.slider-button-learn-more:hover {
+	text-decoration: none;
+	background-color: white;
+	color: #4B4B4B;
+	padding: 10px 30px 10px 30px;
+	margin-left: 20px;
+}
+
+.slider-button-signup,
+.slider-button-signup:hover {
+	text-decoration: none;
+	background-color: #fc8c3a;
+	color: white;
+	padding: 10px 30px 10px 30px;
+}
+
+.slider-button-container {
+	padding-top: 20px;
+	padding-left: 20px;
+}
+
+.top-navigation-container {
+	width: 90%;
+	height: 100px;
+	position: absolute;
+	background-color: white;
+	top: 20px;
+	border-radius: 20px;
+}
+
+.top-navigation-links {
+	text-decoration: none;
+	color: #333333;
+	padding: 5px;
+}
+
+.top-navigation-signup,
+.top-navigation-signup:hover,
+.top-navigation-login,
+.top-navigation-login:hover {
+	text-decoration: none;
+	padding: 10px 30px 10px 30px;
+	color: white;
+	background: #AD32E4;
+	background: -webkit-linear-gradient(left, #AD32E4, #E433B4);
+	background: -moz-linear-gradient(left, #AD32E4, #E433B4);
+	background: linear-gradient(to right, #AD32E4, #E433B4);
+}
+
+.top-navigation-inner-container {
+	text-align: end;
+}
+
+.top-links-inner-container {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.signup-top-navigation {
+	background: hsla(180,0%,50%,0.25);
+}
+
+.sign-up-options-image {
+	display: block;
+	width: 100px;
+	height: auto;
+}
+
+.signup-options-container {
+	background-color: white;
+	border-radius: 20px;
+	margin-left: 20px;
+}
+
+.signup-options-container:hover {
+	cursor: pointer;
+}
+
+.signup-form-inner-container {
+	background-color: white;
+	border-radius: 5px;
+	padding: 30px;
+}
+
+.signup-small-logo {
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.form-input {
+	border: none;
+	border-bottom: 2px #AD32E4 solid;
+	padding: 5px;
+}
+
+.input-container {
+	padding: 10px;
+}
+
+.signup-submit-button {
+	padding: 5px 20px 5px 20px;
+	background-color: #AD32E4;
+	color: white;
+	display: block;
+	margin: 0 auto;
+	border-radius: 5px;
+	border: none;
+}
