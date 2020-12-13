@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.UUID;
 
 @MappedSuperclass
 @Data
@@ -14,9 +13,9 @@ import java.util.UUID;
 @NoArgsConstructor
 public abstract class User implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", updatable = false, nullable = false, unique = true)
-    private UUID id;
+    private Long id;
     @Column(name = "USERNAME", nullable = false, unique = true)
     private String username;
     @Column(name = "PASSWORD", nullable = false)
@@ -27,4 +26,11 @@ public abstract class User implements Serializable {
     private String phoneNumber;
     @Column(name = "ADDRESS")
     private String address;
+    @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+
+    public boolean isApproved() {
+        return this.status.equals(UserStatus.APPROVED);
+    }
 }

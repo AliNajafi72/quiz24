@@ -6,3 +6,4 @@ studentSignup.addEventListener("click", () => {
 teacherSignup.addEventListener("click", () => {
     window.open("signup/teacher","_self")
 })
+

@@ -15,8 +15,6 @@ public class Quiz24Application {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = SpringApplication.run(Quiz24Application.class, args);
-        AnalyticRepository analyticRepository = applicationContext.getBean(AnalyticRepository.class);
-        analyticRepository.save(new Analytic(0L,0L, new Date()));
     }
 
 }

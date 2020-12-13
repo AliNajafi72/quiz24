@@ -1,6 +1,7 @@
 package ir.maktabsharif.quiz24.controller;
 import ir.maktabsharif.quiz24.entity.mysql.Student;
 import ir.maktabsharif.quiz24.entity.mysql.Teacher;
+import ir.maktabsharif.quiz24.entity.mysql.UserStatus;
 import ir.maktabsharif.quiz24.service.StudentService;
 import ir.maktabsharif.quiz24.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,14 @@ public class UserController {
 
     @PostMapping("/teacher-signup")
     public String teacherSignupHandler(@ModelAttribute Teacher teacher) {
+        teacher.setStatus(UserStatus.WAITING);
         teacherService.addTeacher(teacher);
         return "index";
     }
 
     @PostMapping("/student-signup")
     public String studentSignupHandler(@ModelAttribute Student student) {
+        student.setStatus(UserStatus.WAITING);
         studentService.addStudent(student);
         return "index";
     }

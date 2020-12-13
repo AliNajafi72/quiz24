@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}"/>
+    <title>سامانه آنلاین آزمون یار</title>
+</head>
+<body>
+<div class="container-fluid p-0 m-0">
+    <div class="panel-top-navigation row d-flex justify-content-right p-3 m-0 shadow">
+        <div class="">
+            <p class="top-header-text p-0 m-0">سامانه آنلاین</p>
+        </div>
+    </div>
+    <div class="row p-2 m-0">
+        <div class="d-flex p-0 m-0">
+            <div class="d-flex flex-column right-navigation rounded shadow">
+                <div class="d-flex justify-content-center right-navigation-header p-2 rounded-top">
+                    <div class="d-flex flex-column align-self-center justify-content-center">
+                        <img class="right-navigation-header-profile-image rounded-circle" th:src="@{https://robohash.org/4}"/>
+                        <p class="right-navigation-header-text p-0 m-0 text-center">علی نجفی</p>
+                    </div>
+                </div>
+                <div id="dashboard-navigation-button" class="right-navigation-list-container p-2">
+                    <div class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/home.svg}">
+                        داشبورد
+                    </div>
+                    <div id="teacher-navigation-button" class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/teacher-vector.svg}">
+                        اساتید
+                    </div>
+                    <div id="student-navigation-button" class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/profile.svg}">
+                        دانش آموزان
+                    </div>
+                    <div id="course-navigation-button" class="right-navigation-list-inner-container list-end d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/book.svg}">
+                        دروس
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-grow-1 admin-panel-left-container p-1">
+            <div class="d-flex justify-content-around panel-top-metrics">
+                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
+                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
+                    <p class="analytic-text">تعداد دانش آموزان ثبت نام کرده:<span class="analytic-number" th:text="${analytic.studentCount}"></span></p>
+                </div>
+                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
+                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
+                    <p class="analytic-text">تعداد اساتید ثبت نام کرده:<span class="analytic-number" th:text="${analytic.teacherCount}"></span></p>
+                </div>
+                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
+                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
+                    <p class="analytic-text">تاریخ آخرین ثبت نام:<span class="analytic-number" th:text="${analytic.lastSignupDate}"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/admin-panel.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+</body>
+</html>

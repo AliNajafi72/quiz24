@@ -16,4 +16,9 @@ import java.util.List;
 public class Student extends User implements Serializable {
     @ManyToMany(mappedBy = "students")
     private List<Course> courses;
+
+    @Override
+    public boolean isApproved() {
+        return super.isApproved();
+    }
 }

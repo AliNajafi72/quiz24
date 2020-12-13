@@ -322,21 +322,23 @@ blockquote {
 }
 
 .panel-top-navigation {
-	background-color: #AD32E4;
+	background-color: #6a359c;
 	color: white;
 }
 
 .right-navigation-header {
 	color: white;
-	background-image: url("../img/purple-background.jpg");
+	background-color: #6a359c;
 	display: block;
 	width: 300px;
 	height: 150px;
 }
 
 .right-navigation-header-profile-image {
-	width: 50px;
+	width: 80px;
 	display: block;
+	margin-bottom: 10px;
+	background-color: white;
 }
 
 .right-navigation-list-icons {
@@ -347,6 +349,7 @@ blockquote {
 
 .right-navigation-list-inner-container {
 	border-bottom: 1px #999999 solid;
+	cursor: pointer;
 }
 
 .right-navigation-header-text {
@@ -355,4 +358,31 @@ blockquote {
 
 .list-end {
 	border-bottom: none;
+}
+
+.metric-box-icons {
+	display: block;
+	width: 48px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.analytic-number {
+	color: blueviolet;
+	font-weight: bold;
+	font-size: 1rem;
+	margin-right: 10px;
+}
+
+.right-navigation-header-text {
+	font-weight: bolder;
+}
+
+.top-header-text {
+	font-weight: bolder;
+}
+
+.table-header {
+	background-color: #6a359c;
+	color: white;
 }
