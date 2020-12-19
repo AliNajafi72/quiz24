@@ -44,4 +44,9 @@ public class TeacherService{
         teacherRepository.save(teacher);
         return course;
     }
+
+    public List<Course> getTeacherAllCourses(Long id) {
+        Teacher teacher = teacherRepository.findById(id).orElseThrow();
+        return teacher.getCourses();
+    }
 }

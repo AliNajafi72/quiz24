@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -42,4 +41,12 @@ public class Course implements Serializable {
             }
     )
     private List<Student> students;
+    @OneToMany(mappedBy = "course")
+    private List<Quiz> quizzes;
+
+    public Quiz addExam(Quiz quiz) {
+        quizzes.add(quiz);
+        quiz.setCourse(this);
+        return quiz;
+    }
 }

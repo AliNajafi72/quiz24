@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}"/>
+    <title>سامانه آنلاین آزمون یار</title>
+</head>
+<body>
+<div class="container-fluid p-0 m-0">
+    <div class="panel-top-navigation row d-flex justify-content-right p-3 m-0 shadow">
+        <div class="">
+            <p class="top-header-text p-0 m-0">سامانه آنلاین</p>
+        </div>
+    </div>
+    <div class="row p-2 m-0">
+        <div class="d-flex p-0 m-0">
+            <div class="d-flex flex-column right-navigation rounded shadow">
+                <div class="d-flex justify-content-center right-navigation-header p-2 rounded-top">
+                    <div class="d-flex flex-column align-self-center justify-content-center">
+                        <img class="right-navigation-header-profile-image rounded-circle" th:src="@{https://robohash.org/4}"/>
+                        <p class="right-navigation-header-text p-0 m-0 text-center">علی نجفی</p>
+                    </div>
+                </div>
+                <div id="dashboard-navigation-button" class="right-navigation-list-container p-2">
+                    <div class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/home.svg}">
+                        داشبورد
+                    </div>
+                    <div id="course-navigation-button" class="right-navigation-list-inner-container list-end d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/book.svg}">
+                        دروس
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-grow-1 admin-panel-left-container p-1">
+            <div class="d-flex table-inner-container shadow">
+                <table class="user-table w-100">
+                    <tr class="table-header-row">
+                        <th class="table-header text-right p-2">شناسه درس</th>
+                        <th class="table-header text-right p-2">نام درس</th>
+                        <th class="table-header text-right p-2">تاریخ شروع</th>
+                        <th class="table-header text-right p-2">تاریخ پایان</th>
+                        <th class="table-header text-right p-2">عملیات</th>
+                    </tr>
+                    <tr th:each="course : ${courses}">
+                        <td class="text-right p-2" th:text="${course.id}"></td>
+                        <td class="text-right p-2" th:text="${course.title}"></td>
+                        <td class="text-right p-2" th:text="${course.startDate}"></td>
+                        <td class="text-right p-2" th:text="${course.finishDate}"></td>
+                        <td class="text-right p-2">
+                            <a th:href="${teacherId} + '/' + ${course.id}">مشاهده آزمون ها</a>
+                            <a th:href="${teacherId} + '/' + ${course.id}">اضافه کردن آزمون</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/admin-panel.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+</body>
+</html>

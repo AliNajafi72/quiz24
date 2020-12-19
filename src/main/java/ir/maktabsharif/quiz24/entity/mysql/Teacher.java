@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,9 +16,10 @@ import java.util.List;
 @Table(name = "TEACHER")
 public class Teacher extends User implements Serializable {
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
-    private List<Course> courses;
+    private List<Course> courses = new ArrayList<>();
 
     public void addCourse(Course course) {
-        courses.add(course);
+        this.courses.add(course);
+        course.setTeacher(this);
     }
 }
