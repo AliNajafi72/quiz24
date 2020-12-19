@@ -14,6 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "TEACHER")
 public class Teacher extends User implements Serializable {
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<Course> courses;
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
 }

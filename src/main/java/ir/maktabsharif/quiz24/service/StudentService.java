@@ -1,6 +1,7 @@
 package ir.maktabsharif.quiz24.service;
 
 import ir.maktabsharif.quiz24.entity.mysql.Student;
+import ir.maktabsharif.quiz24.entity.mysql.UserStatus;
 import ir.maktabsharif.quiz24.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,12 @@ public class StudentService {
             students.add(student);
         }
         return students;
+    }
+
+    public Student verifyStudent(Long id) {
+        Student student = studentRepository.findById(id).isPresent()?studentRepository.findById(id).get():new Student();
+        student.setStatus(UserStatus.APPROVED);
+        studentRepository.save(student);
+        return student;
     }
 }

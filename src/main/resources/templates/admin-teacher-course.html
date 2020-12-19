@@ -20,7 +20,8 @@
             <div class="d-flex flex-column right-navigation rounded shadow">
                 <div class="d-flex justify-content-center right-navigation-header p-2 rounded-top">
                     <div class="d-flex flex-column align-self-center justify-content-center">
-                        <img class="right-navigation-header-profile-image" th:src="@{https://robohash.org/4}"/>
+                        <img class="right-navigation-header-profile-image rounded-circle"
+                             th:src="@{https://robohash.org/4}"/>
                         <p class="right-navigation-header-text p-0 m-0 text-center">علی نجفی</p>
                     </div>
                 </div>
@@ -29,35 +30,36 @@
                         <img class="right-navigation-list-icons" th:src="@{/img/home.svg}">
                         داشبورد
                     </div>
-                    <div id="teacher-navigation-button" class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                    <div id="teacher-navigation-button"
+                         class="right-navigation-list-inner-container d-flex justify-content-start p-2">
                         <img class="right-navigation-list-icons" th:src="@{/img/teacher-vector.svg}">
                         اساتید
                     </div>
-                    <div id="student-navigation-button" class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                    <div id="student-navigation-button"
+                         class="right-navigation-list-inner-container d-flex justify-content-start p-2">
                         <img class="right-navigation-list-icons" th:src="@{/img/profile.svg}">
                         دانش آموزان
                     </div>
-                    <div id="course-navigation-button" class="right-navigation-list-inner-container list-end d-flex justify-content-start p-2">
+                    <div id="course-navigation-button"
+                         class="right-navigation-list-inner-container list-end d-flex justify-content-start p-2">
                         <img class="right-navigation-list-icons" th:src="@{/img/book.svg}">
                         دروس
                     </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-column flex-grow-1 admin-panel-left-container p-1">
-            <div class="d-flex justify-content-around panel-top-metrics">
-                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
-                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
-                    <p class="analytic-text">تعداد دانش آموزان ثبت نام کرده:<span class="analytic-number" th:text="${analytic.studentCount}"></span></p>
-                </div>
-                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
-                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
-                    <p class="analytic-text">تعداد اساتید ثبت نام کرده:<span class="analytic-number" th:text="${analytic.teacherCount}"></span></p>
-                </div>
-                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
-                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
-                    <p class="analytic-text">تاریخ آخرین ثبت نام:<span class="analytic-number" th:text="${analytic.lastSignupDate}"></span></p>
-                </div>
+        <div class="d-flex flex-column flex-grow-1 admin-panel-left-container rounded">
+            <div class="d-flex course-form-inner-container shadow rounded">
+                <form class="w-100" th:form th:action="'/admin/teacher/add-course/' + ${teacherId}" method="post">
+                    <div class="d-flex w-100 p-3">
+                        <input placeholder="عنوان درس" class="form-input align-self-baseline" type="text" th:name="title"/>
+                        <p class="mr-5 align-self-baseline">تاریخ شروع:</p>
+                        <input class="form-input mr-5 align-self-baseline" type="date" th:name="startDate"/>
+                        <p class="mr-5 align-self-baseline">تاریخ پایان:</p>
+                        <input class="form-input mr-5 align-self-baseline" type="date" th:name="finishDate"/>
+                        <input class="signup-submit-button m-0 mr-5 align-self-baseline" type="submit" value="افزودن درس"/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

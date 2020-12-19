@@ -33,8 +33,8 @@
                     به همراه پنل تکلیف آنلاین با قابلیت های منحصربفرد و امکان ارسال و دریافت فایل
                 </p>
                 <div class="slider-button-container">
-                    <a class="slider-button-learn-more rounded-pill" href="#">بیشتر بخوانید</a>
-                    <a class="slider-button-signup rounded-pill" href="#">ثبت نام</a>
+                    <a class="slider-button-learn-more rounded-pill" th:href="@{/signup}">بیشتر بخوانید</a>
+                    <a class="slider-button-signup rounded-pill" th:href="@{/signup}">ثبت نام</a>
                 </div>
 
             </div>
@@ -66,8 +66,8 @@
                 <a class="top-navigation-links" href="#">تکلیف آنلاین</a>
             </div>
             <div class="align-self-center">
-                <a href="#" class="top-navigation-login rounded-pill">ورود</a>
-                <a href="#" class="top-navigation-signup rounded-pill">ثبت نام</a>
+                <a href="#" class="top-navigation-login rounded-pill" th:href="@{/signup}">ورود</a>
+                <a href="#" class="top-navigation-signup rounded-pill" th:href="@{/signup}">ثبت نام</a>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
             el: '.swiper-pagination',
         },
         autoplay: {
-            delay: 5000,
+            delay: 2000,
         },
         navigation: {
             nextEl: '.swiper-button-next',

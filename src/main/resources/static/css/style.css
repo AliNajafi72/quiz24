@@ -338,7 +338,6 @@ blockquote {
 	width: 80px;
 	display: block;
 	margin-bottom: 10px;
-	background-color: white;
 }
 
 .right-navigation-list-icons {
@@ -348,7 +347,7 @@ blockquote {
 }
 
 .right-navigation-list-inner-container {
-	border-bottom: 1px #999999 solid;
+	/*border-bottom: 3px #6a359c solid;*/
 	cursor: pointer;
 }
 
@@ -385,4 +384,31 @@ blockquote {
 .table-header {
 	background-color: #6a359c;
 	color: white;
+}
+
+.message-box {
+	color: white;
+	position: absolute;
+	top: 100px;
+	animation-name: hiding-animation;
+	animation-duration: 5s;
+	opacity: 0;
+}
+
+.message-box-text {
+	font-weight: bold;
+	background-color: #4CAF50;
+	display: block;
+	padding: 0;
+	margin: 0;
+
+}
+
+.student-signup-main-container {
+	position: relative;
+}
+
+@keyframes hiding-animation {
+	from {opacity: 100%}
+	to {opacity: 0}
 }

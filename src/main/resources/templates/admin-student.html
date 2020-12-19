@@ -52,12 +52,23 @@
                         <th class="table-header text-right p-2">نام کاربری</th>
                         <th class="table-header text-right p-2">شماره تلفن همراه</th>
                         <th class="table-header text-right p-2">وضعیت</th>
+                        <th class="table-header text-right p-2">عملیات</th>
                     </tr>
                     <tr th:each="student : ${students}">
+                        <!-- Not Approved student-->
                         <td th:if="${not student.isApproved()}" class="text-right p-2" th:text="${student.id}"></td>
                         <td th:if="${not student.isApproved()}" class="text-right p-2" th:text="${student.username}"></td>
                         <td th:if="${not student.isApproved()}" class="text-right p-2" th:text="${student.phoneNumber}"></td>
                         <td th:if="${not student.isApproved()}" class="text-right p-2">در انتظار تایید</td>
+                        <td th:if="${not student.isApproved()}" class="text-right p-2">
+                            <a th:href="'admin/student/verify/' + ${student.id}">تایید کاربر</a>
+                        </td>
+
+                        <!-- Approved student-->
+                        <td th:if="${student.isApproved()}" class="text-right p-2" th:text="${student.id}"></td>
+                        <td th:if="${student.isApproved()}" class="text-right p-2" th:text="${student.username}"></td>
+                        <td th:if="${student.isApproved()}" class="text-right p-2" th:text="${student.phoneNumber}"></td>
+                        <td th:if="${student.isApproved()}" class="text-right p-2">تایید شده</td>
                     </tr>
                 </table>
             </div>

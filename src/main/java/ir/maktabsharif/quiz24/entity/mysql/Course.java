@@ -19,7 +19,7 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "COURSE_ID", nullable = false, unique = true, updatable = false)
-    private UUID id;
+    private Long id;
     @Column(name = "TITLE", nullable = false)
     private String title;
     @Temporal(TemporalType.DATE)

@@ -9,7 +9,7 @@
     <title>سامانه آنلاین آزمون یار</title>
 </head>
 <body>
-<div class="container-fluid p-0 m-0">
+<div class="student-signup-main-container container-fluid p-0 m-0">
     <div class="signup-top-navigation low-brightness row d-flex justify-content-around p-3 m-0">
         <div class="">
             <h3>سامانه آنلاین</h3>
@@ -46,6 +46,11 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div th:if="${isSignupSuccessful == true}" class="d-flex justify-content-center message-box w-100">
+        <p class="message-box-text p-5">
+            ثبت نام شما با موفقیت انجام شد!
+        </p>
     </div>
 </div>
 <script th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>

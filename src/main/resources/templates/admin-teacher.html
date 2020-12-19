@@ -20,7 +20,7 @@
             <div class="d-flex flex-column right-navigation rounded shadow">
                 <div class="d-flex justify-content-center right-navigation-header p-2 rounded-top">
                     <div class="d-flex flex-column align-self-center justify-content-center">
-                        <img class="right-navigation-header-profile-image" th:src="@{https://robohash.org/4}"/>
+                        <img class="right-navigation-header-profile-image rounded-circle" th:src="@{https://robohash.org/4}"/>
                         <p class="right-navigation-header-text p-0 m-0 text-center">علی نجفی</p>
                     </div>
                 </div>
@@ -45,19 +45,35 @@
             </div>
         </div>
         <div class="d-flex flex-column flex-grow-1 admin-panel-left-container p-1">
-            <div class="d-flex justify-content-around panel-top-metrics">
-                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
-                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
-                    <p class="analytic-text">تعداد دانش آموزان ثبت نام کرده:<span class="analytic-number" th:text="${analytic.studentCount}"></span></p>
-                </div>
-                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
-                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
-                    <p class="analytic-text">تعداد اساتید ثبت نام کرده:<span class="analytic-number" th:text="${analytic.teacherCount}"></span></p>
-                </div>
-                <div class="d-flex flex-column justify-content-start metric-box shadow p-5 rounded">
-                    <img class="metric-box-icons" th:src="@{/img/chart.svg}"/>
-                    <p class="analytic-text">تاریخ آخرین ثبت نام:<span class="analytic-number" th:text="${analytic.lastSignupDate}"></span></p>
-                </div>
+            <div class="d-flex table-inner-container shadow">
+                <table class="user-table w-100">
+                    <tr class="table-header-row">
+                        <th class="table-header text-right p-2">شناسه کاربری</th>
+                        <th class="table-header text-right p-2">نام کاربری</th>
+                        <th class="table-header text-right p-2">شماره تلفن همراه</th>
+                        <th class="table-header text-right p-2">وضعیت</th>
+                        <th class="table-header text-right p-2">عملیات</th>
+                    </tr>
+                    <tr th:each="teacher : ${teachers}">
+                        <!-- Not Approved teacher-->
+                        <td th:if="${not teacher.isApproved()}" class="text-right p-2" th:text="${teacher.id}"></td>
+                        <td th:if="${not teacher.isApproved()}" class="text-right p-2" th:text="${teacher.username}"></td>
+                        <td th:if="${not teacher.isApproved()}" class="text-right p-2" th:text="${teacher.phoneNumber}"></td>
+                        <td th:if="${not teacher.isApproved()}" class="text-right p-2">در انتظار تایید</td>
+                        <td th:if="${not teacher.isApproved()}" class="text-right p-2">
+                            <a th:href="'teacher/verify/' + ${teacher.id}">تایید کاربر</a>
+                        </td>
+
+                        <!-- Approved teacher-->
+                        <td th:if="${teacher.isApproved()}" class="text-right p-2" th:text="${teacher.id}"></td>
+                        <td th:if="${teacher.isApproved()}" class="text-right p-2" th:text="${teacher.username}"></td>
+                        <td th:if="${teacher.isApproved()}" class="text-right p-2" th:text="${teacher.phoneNumber}"></td>
+                        <td th:if="${teacher.isApproved()}" class="text-right p-2">تایید شده</td>
+                        <td th:if="${teacher.isApproved()}" class="text-right p-2">
+                            <a th:href="'teacher/add-course/' + ${teacher.id}">افزودن درس</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

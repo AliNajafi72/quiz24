@@ -7,9 +7,11 @@ import ir.maktabsharif.quiz24.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/signup")
@@ -35,23 +37,25 @@ public class UserController {
         return "teacher-signup";
     }
 
+    @PostMapping("/teacher-signup")
+    public ModelAndView teacherSignupHandler(@ModelAttribute Teacher teacher) {
+        teacher.setStatus(UserStatus.WAITING);
+        teacherService.addTeacher(teacher);
+        return new ModelAndView("redirect:/");
+    }
+
     @RequestMapping("/student")
     public String studentSignup(Model model) {
+        model.addAttribute("isSignupSuccessful", false);
         model.addAttribute("student", new Student());
         return "student-signup";
     }
 
-    @PostMapping("/teacher-signup")
-    public String teacherSignupHandler(@ModelAttribute Teacher teacher) {
-        teacher.setStatus(UserStatus.WAITING);
-        teacherService.addTeacher(teacher);
-        return "index";
-    }
-
     @PostMapping("/student-signup")
-    public String studentSignupHandler(@ModelAttribute Student student) {
+    public String studentSignupHandler(@ModelAttribute Student student, Model model) {
         student.setStatus(UserStatus.WAITING);
         studentService.addStudent(student);
-        return "index";
+        model.addAttribute("isSignupSuccessful", true);
+        return "student-signup";
     }
 }
