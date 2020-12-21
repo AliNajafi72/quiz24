@@ -6,9 +6,8 @@ import ir.maktabsharif.quiz24.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -39,8 +38,20 @@ public class TeacherController {
 
     @GetMapping("/course/{teacherId}/{courseId}")
     public String courseExamsPage(@PathVariable Long teacherId, @PathVariable Long courseId, Model model) {
-        List<Quiz> quizzes = courseService.getCourseExam(courseId);
+        List<Quiz> quizzes = courseService.getCourseQuiz(courseId);
         model.addAttribute("exams", quizzes);
         return "teacher-course-exam";
+    }
+
+    @GetMapping("/course/quiz/{teacherId}/{courseId}")
+    public String addNewQuiz(@PathVariable Long courseId, @PathVariable Long teacherId, Model model) {
+        model.addAttribute("quiz", new Quiz());
+        return "teacher-course-new-exam";
+    }
+
+    @PostMapping("/course/quiz/{teacherId}/{courseId}")
+    public ModelAndView addNewQuizHandler(@PathVariable Long courseId,@PathVariable Long teacherId, @ModelAttribute Quiz quiz) {
+        courseService.addCourseQuiz(courseId, quiz);
+        return new ModelAndView("redirect:/teacher/course/" + teacherId);
     }
 }

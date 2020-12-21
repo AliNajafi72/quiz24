@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.xml.crypto.Data;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -74,7 +73,7 @@ public class AdminController {
     public String addCourse(@PathVariable String id, Model model) {
         model.addAttribute("course", new Course());
         model.addAttribute("teacherId", id);
-        return "admin-teacher-course";
+        return "admin-teacher-new-course";
     }
 
     @PostMapping("teacher/add-course/{id}")

@@ -18,8 +18,15 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public List<Quiz> getCourseExam(Long courseId) {
+    public List<Quiz> getCourseQuiz(Long courseId) {
         Course course = courseRepository.findById(courseId).orElseThrow();
         return course.getQuizzes();
+    }
+
+    public Quiz addCourseQuiz(Long courseId, Quiz quiz) {
+        Course course = courseRepository.findById(courseId).orElseThrow();
+        course.addQuiz(quiz);
+        courseRepository.save(course);
+        return quiz;
     }
 }

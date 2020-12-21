@@ -41,10 +41,10 @@ public class Course implements Serializable {
             }
     )
     private List<Student> students;
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Quiz> quizzes;
 
-    public Quiz addExam(Quiz quiz) {
+    public Quiz addQuiz(Quiz quiz) {
         quizzes.add(quiz);
         quiz.setCourse(this);
         return quiz;
