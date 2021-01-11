@@ -52,8 +52,8 @@
                         <td class="text-right p-2" th:text="${course.startDate}"></td>
                         <td class="text-right p-2" th:text="${course.finishDate}"></td>
                         <td class="text-right p-2">
-                            <a th:href="${teacherId} + '/' + ${course.id}">مشاهده آزمون ها</a>
-                            <a th:href="'quiz/' + ${teacherId} + '/' + ${course.id}">اضافه کردن آزمون</a>
+                            <a class="ml-2" th:href="'/teacher/' + ${teacherId} + '/course/' + ${course.id}">مشاهده آزمون ها</a>
+                            <a th:href="'/teacher/' + ${teacherId} + '/course/' + ${course.id} + '/quiz'">اضافه کردن آزمون</a>
                         </td>
                     </tr>
                 </table>

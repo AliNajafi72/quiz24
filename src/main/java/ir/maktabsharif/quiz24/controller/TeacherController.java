@@ -29,29 +29,29 @@ public class TeacherController {
         return "teacher";
     }
 
-    @GetMapping("/course/{teacherId}")
+    @GetMapping("/{teacherId}/course")
     public String coursesPage(@PathVariable Long teacherId, Model model) {
         model.addAttribute("courses", teacherService.getTeacherAllCourses(teacherId));
         model.addAttribute("teacherId", teacherId);
         return "teacher-course";
     }
 
-    @GetMapping("/course/{teacherId}/{courseId}")
+    @GetMapping("/{teacherId}/course/{courseId}")
     public String courseExamsPage(@PathVariable Long teacherId, @PathVariable Long courseId, Model model) {
         List<Quiz> quizzes = courseService.getCourseQuiz(courseId);
         model.addAttribute("exams", quizzes);
         return "teacher-course-exam";
     }
 
-    @GetMapping("/course/quiz/{teacherId}/{courseId}")
+    @GetMapping("/{teacherId}/course/{courseId}/quiz")
     public String addNewQuiz(@PathVariable Long courseId, @PathVariable Long teacherId, Model model) {
         model.addAttribute("quiz", new Quiz());
         return "teacher-course-new-exam";
     }
 
-    @PostMapping("/course/quiz/{teacherId}/{courseId}")
+    @PostMapping("/{teacherId}/course/{courseId}/quiz")
     public ModelAndView addNewQuizHandler(@PathVariable Long courseId,@PathVariable Long teacherId, @ModelAttribute Quiz quiz) {
         courseService.addCourseQuiz(courseId, quiz);
-        return new ModelAndView("redirect:/teacher/course/" + teacherId);
+        return new ModelAndView("redirect:/teacher/" + teacherId + "/course/");
     }
 }

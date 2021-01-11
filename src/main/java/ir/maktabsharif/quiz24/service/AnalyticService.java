@@ -22,6 +22,6 @@ public class AnalyticService {
 
     public Analytic getAnalytic() {
         Optional<Analytic> analyticOptional = Optional.ofNullable(analyticRepository.findAll().get(0));
-        return analyticOptional.orElseGet(() -> new Analytic(0L, 0L, new Date()));
+        return analyticOptional.orElseGet(() -> new Analytic(0L, 0L, 0L, new Date()));
     }
 }
