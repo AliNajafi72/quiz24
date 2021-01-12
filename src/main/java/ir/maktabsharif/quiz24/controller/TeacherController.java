@@ -54,4 +54,30 @@ public class TeacherController {
         courseService.addCourseQuiz(courseId, quiz);
         return new ModelAndView("redirect:/teacher/" + teacherId + "/course/");
     }
+
+    @GetMapping("/{teacherId}/course/{courseId}/quiz/{quizId}")
+    public String quizModification(
+            @PathVariable Long teacherId,
+            @PathVariable Long courseId,
+            @PathVariable Long quizId
+    ) {
+        return "quiz-modify";
+    }
+
+    @GetMapping("/{teacherId}/course/{courseId}/quiz/{quizId}/multiChoice")
+    public String multiChoiceQuiz(@PathVariable String courseId,
+                                  @PathVariable String quizId,
+                                  @PathVariable String teacherId,
+                                  Model model) {
+        return "multi-choice-question";
+    }
+
+    @GetMapping("/{teacherId}/course/{courseId}/quiz/{quizId}/descriptive")
+    public String descriptiveQuiz(@PathVariable String courseId,
+                                  @PathVariable String quizId,
+                                  @PathVariable String teacherId,
+                                  Model model) {
+        return "descriptive-question";
+
+    }
 }

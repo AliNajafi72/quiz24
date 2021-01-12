@@ -321,6 +321,15 @@ blockquote {
 	border: none;
 }
 
+.button-link {
+	padding: 5px 20px 5px 20px;
+	background-color: #AD32E4;
+	color: white;
+	display: block;
+	border-radius: 5px;
+	border: none;
+}
+
 .panel-top-navigation {
 	background-color: #6a359c;
 	color: white;
