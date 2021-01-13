@@ -13,9 +13,7 @@ public class DescriptiveQuestionService {
     private MongoDBSequenceGeneratorService mongoDBSequenceGeneratorService;
 
     @Autowired
-    public DescriptiveQuestionService(DescriptiveQuestionRepository descriptiveQuestionRepository,
-                                      MongoDBSequenceGeneratorService mongoDBSequenceGeneratorService
-    ) {
+    public DescriptiveQuestionService(DescriptiveQuestionRepository descriptiveQuestionRepository, MongoDBSequenceGeneratorService mongoDBSequenceGeneratorService) {
         this.descriptiveQuestionRepository = descriptiveQuestionRepository;
         this.mongoDBSequenceGeneratorService = mongoDBSequenceGeneratorService;
     }

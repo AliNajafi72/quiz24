@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}"/>
+    <title>سامانه آنلاین آزمون یار</title>
 </head>
 <body>
-
+<div class="container-fluid p-0 m-0">
+    <div class="panel-top-navigation row d-flex justify-content-right p-3 m-0 shadow">
+        <div class="">
+            <p class="top-header-text p-0 m-0">سامانه آنلاین</p>
+        </div>
+    </div>
+    <div class="row p-2 m-0">
+        <div class="d-flex p-0 m-0">
+            <div class="d-flex flex-column right-navigation rounded shadow">
+                <div class="d-flex justify-content-center right-navigation-header p-2 rounded-top">
+                    <div class="d-flex flex-column align-self-center justify-content-center">
+                        <img class="right-navigation-header-profile-image rounded-circle"
+                             th:src="@{https://robohash.org/4}"/>
+                        <p class="right-navigation-header-text p-0 m-0 text-center">علی نجفی</p>
+                    </div>
+                </div>
+                <div id="dashboard-navigation-button" class="right-navigation-list-container p-2">
+                    <div class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/home.svg}">
+                        داشبورد
+                    </div>
+                    <div id="teacher-navigation-button"
+                         class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/teacher-vector.svg}">
+                        اساتید
+                    </div>
+                    <div id="student-navigation-button"
+                         class="right-navigation-list-inner-container d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/profile.svg}">
+                        دانش آموزان
+                    </div>
+                    <div id="course-navigation-button"
+                         class="right-navigation-list-inner-container list-end d-flex justify-content-start p-2">
+                        <img class="right-navigation-list-icons" th:src="@{/img/book.svg}">
+                        دروس
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-grow-1 admin-panel-left-container rounded">
+            <div class="d-flex course-form-inner-container shadow rounded">
+                <form class="w-100" th:form th:action="'/teacher/' + ${teacherId} + '/course/' + ${courseId} + '/quiz/' + ${quizId} + '/multiChoice'" method="post" th:object="${multiChoiceQuestion}">
+                    <div class="d-flex flex-column w-100 p-3">
+                        <input th:if="${multiChoiceQuestion.choices.size()<0}" placeholder="علامت سوال" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{tag}"/>
+                        <input th:if="${multiChoiceQuestion.choices.size()<0}" placeholder="صورت سوال" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{title}"/>
+                        <input class="signup-submit-button m-0 align-self-baseline" type="submit" value="افزودن سوال"/>
+                        <input placeholder="متن گزینه" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{choice}"/>
+                        <input class="signup-submit-button m-0 align-self-baseline" type="submit" value="افزودن گزینه" th:formaction="'/teacher/' + ${teacherId} + '/course/' + ${courseId} + '/quiz/' + ${quizId} + '/multiChoice/choice'"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/admin-panel.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
+<script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
 </body>
 </html>
