@@ -102,7 +102,9 @@ public class TeacherController {
                                       @PathVariable String quizId,
                                       @PathVariable String teacherId,
                                       Model model) {
-        model.addAttribute(new MultiChoiceQuestion());
+        MultiChoiceQuestion multiChoiceQuestion = new MultiChoiceQuestion();
+        multiChoiceQuestion.setChoices(multiChoiceQuestionHelper.getChoices());
+        model.addAttribute(multiChoiceQuestion);
         return "multi-choice-question";
     }
 

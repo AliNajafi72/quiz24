@@ -52,8 +52,8 @@
             <div class="d-flex course-form-inner-container shadow rounded">
                 <form class="w-100" th:form th:action="'/teacher/' + ${teacherId} + '/course/' + ${courseId} + '/quiz/' + ${quizId} + '/multiChoice'" method="post" th:object="${multiChoiceQuestion}">
                     <div class="d-flex flex-column w-100 p-3">
-                        <input th:if="${multiChoiceQuestion.choices.size()<0}" placeholder="علامت سوال" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{tag}"/>
-                        <input th:if="${multiChoiceQuestion.choices.size()<0}" placeholder="صورت سوال" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{title}"/>
+                        <input th:if="${multiChoiceQuestion.choices.size()<1}" placeholder="علامت سوال" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{tag}"/>
+                        <input th:if="${multiChoiceQuestion.choices.size()<1}" placeholder="صورت سوال" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{title}"/>
                         <input class="signup-submit-button m-0 align-self-baseline" type="submit" value="افزودن سوال"/>
                         <input placeholder="متن گزینه" class="form-input align-self-baseline ml-3 mb-2 w-100" type="text" th:field="*{choice}"/>
                         <input class="signup-submit-button m-0 align-self-baseline" type="submit" value="افزودن گزینه" th:formaction="'/teacher/' + ${teacherId} + '/course/' + ${courseId} + '/quiz/' + ${quizId} + '/multiChoice/choice'"/>

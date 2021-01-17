@@ -3,6 +3,7 @@ package ir.maktabsharif.quiz24.service;
 import ir.maktabsharif.quiz24.entity.mysql.Student;
 import ir.maktabsharif.quiz24.entity.mysql.UserStatus;
 import ir.maktabsharif.quiz24.repository.StudentRepository;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

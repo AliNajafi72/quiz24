@@ -4,6 +4,7 @@ import ir.maktabsharif.quiz24.entity.mysql.Course;
 import ir.maktabsharif.quiz24.entity.mysql.Teacher;
 import ir.maktabsharif.quiz24.entity.mysql.UserStatus;
 import ir.maktabsharif.quiz24.repository.TeacherRepository;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
