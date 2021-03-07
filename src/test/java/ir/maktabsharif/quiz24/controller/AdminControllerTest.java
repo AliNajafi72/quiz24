@@ -12,16 +12,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.stereotype.Repository;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 class AdminControllerTest extends User {
     // Model
@@ -66,5 +67,14 @@ class AdminControllerTest extends User {
         Mockito.when(analyticRepository.findAll()).thenReturn(analytics);
         String view = this.adminController.adminPanelIndex(this.model);
         assertEquals("admin", view);
+    }
+
+    @Test
+    void mockMvc() throws Exception {
+        List<Analytic> analytics = new ArrayList<>();
+        analytics.add(new Analytic());
+        Mockito.when(analyticRepository.findAll()).thenReturn(analytics);
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(adminController).build();
+        mockMvc.perform(get("/admin/")).andExpect(status().isOk()).andExpect(view().name("admin"));
     }
 }
