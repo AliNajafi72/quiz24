@@ -142,4 +142,10 @@ public class TeacherController {
         model.addAttribute(multiChoiceQuestion);
         return "multi-choice-question";
     }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public String teacherNotFoundHandler(Exception exception, Model model) {
+        model.addAttribute("exception", exception);
+        return "404";
+    }
 }

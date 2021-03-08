@@ -49,7 +49,7 @@ public class TeacherService{
     }
 
     public List<Course> getTeacherAllCourses(Long id) throws Exception {
-        Supplier<Exception> userNotFoundSupplier = UserNotFoundException::new;
+        Supplier<Exception> userNotFoundSupplier = ()-> new UserNotFoundException("There is no user with ID of: " + id.toString());
         Teacher teacher = teacherRepository.findById(id).orElseThrow(userNotFoundSupplier);
         return teacher.getCourses();
     }
