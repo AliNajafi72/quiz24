@@ -3,6 +3,7 @@ package ir.maktabsharif.quiz24.service;
 import ir.maktabsharif.quiz24.entity.mysql.Course;
 import ir.maktabsharif.quiz24.entity.mysql.Teacher;
 import ir.maktabsharif.quiz24.entity.mysql.UserStatus;
+import ir.maktabsharif.quiz24.exception.UserNotFoundException;
 import ir.maktabsharif.quiz24.repository.TeacherRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 @Service
 public class TeacherService{
@@ -46,8 +48,9 @@ public class TeacherService{
         return course;
     }
 
-    public List<Course> getTeacherAllCourses(Long id) {
-        Teacher teacher = teacherRepository.findById(id).orElseThrow();
+    public List<Course> getTeacherAllCourses(Long id) throws Exception {
+        Supplier<Exception> userNotFoundSupplier = UserNotFoundException::new;
+        Teacher teacher = teacherRepository.findById(id).orElseThrow(userNotFoundSupplier);
         return teacher.getCourses();
     }
 }

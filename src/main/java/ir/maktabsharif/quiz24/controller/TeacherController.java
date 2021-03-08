@@ -3,6 +3,7 @@ package ir.maktabsharif.quiz24.controller;
 import ir.maktabsharif.quiz24.entity.mongodb.DescriptiveQuestion;
 import ir.maktabsharif.quiz24.entity.mongodb.MultiChoiceQuestion;
 import ir.maktabsharif.quiz24.entity.mysql.Quiz;
+import ir.maktabsharif.quiz24.exception.UserNotFoundException;
 import ir.maktabsharif.quiz24.helper.MultiChoiceQuestionHelper;
 import ir.maktabsharif.quiz24.service.CourseService;
 import ir.maktabsharif.quiz24.service.DescriptiveQuestionService;
@@ -43,7 +44,7 @@ public class TeacherController {
     }
 
     @GetMapping("/{teacherId}/course")
-    public String coursesPage(@PathVariable Long teacherId, Model model) {
+    public String coursesPage(@PathVariable Long teacherId, Model model) throws Exception {
         model.addAttribute("courses", teacherService.getTeacherAllCourses(teacherId));
         model.addAttribute("teacherId", teacherId);
         return "teacher-course";
