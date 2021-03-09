@@ -16,9 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/teacher")
@@ -45,8 +43,8 @@ public class TeacherController {
     }
 
     @GetMapping("/{teacherId}/course")
-    public String coursesPage(@PathVariable Long teacherId, Model model) throws Exception {
-        model.addAttribute("courses", teacherService.getTeacherAllCourses(teacherId));
+    public String coursesPage(@PathVariable String teacherId, Model model) throws Exception {
+        model.addAttribute("courses", teacherService.getTeacherAllCourses(Long.parseLong(teacherId)));
         model.addAttribute("teacherId", teacherId);
         return "teacher-course";
     }
@@ -65,7 +63,7 @@ public class TeacherController {
     }
 
     @PostMapping("/{teacherId}/course/{courseId}/quiz")
-    public ModelAndView addNewQuizHandler(@PathVariable Long courseId,@PathVariable Long teacherId, @ModelAttribute Quiz quiz) {
+    public ModelAndView addNewQuizHandler(@PathVariable Long courseId, @PathVariable Long teacherId, @ModelAttribute Quiz quiz) {
         courseService.addCourseQuiz(courseId, quiz);
         return new ModelAndView("redirect:/teacher/" + teacherId + "/course/");
     }
@@ -81,9 +79,9 @@ public class TeacherController {
 
     @GetMapping("/{teacherId}/course/{courseId}/quiz/{quizId}/descriptive")
     public String descriptiveQuestion(@PathVariable String courseId,
-                                  @PathVariable String quizId,
-                                  @PathVariable String teacherId,
-                                  Model model) {
+                                      @PathVariable String quizId,
+                                      @PathVariable String teacherId,
+                                      Model model) {
         model.addAttribute(new DescriptiveQuestion());
         return "descriptive-question";
     }
@@ -149,5 +147,12 @@ public class TeacherController {
     public String teacherNotFoundHandler(Exception exception, Model model) {
         model.addAttribute("exception", exception);
         return "404";
+    }
+
+    @ExceptionHandler(NumberFormatException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String badRequest(Exception exception, Model model) {
+        model.addAttribute("exception", exception);
+        return "400";
     }
 }
