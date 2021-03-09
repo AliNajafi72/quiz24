@@ -10,6 +10,7 @@ import ir.maktabsharif.quiz24.service.DescriptiveQuestionService;
 import ir.maktabsharif.quiz24.service.MultiChoiceQuestionService;
 import ir.maktabsharif.quiz24.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -144,6 +145,7 @@ public class TeacherController {
     }
 
     @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public String teacherNotFoundHandler(Exception exception, Model model) {
         model.addAttribute("exception", exception);
         return "404";
