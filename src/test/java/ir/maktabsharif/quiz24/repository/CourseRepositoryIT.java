@@ -1,7 +1,8 @@
 package ir.maktabsharif.quiz24.repository;
 
-import ir.maktabsharif.quiz24.entity.mysql.Course;
-import ir.maktabsharif.quiz24.entity.mysql.User;
+import ir.maktabsharif.quiz24.entities.mysql.Course;
+import ir.maktabsharif.quiz24.entities.mysql.User;
+import ir.maktabsharif.quiz24.repositories.CourseRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

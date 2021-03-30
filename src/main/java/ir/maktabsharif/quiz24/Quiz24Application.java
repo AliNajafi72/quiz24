@@ -1,20 +1,15 @@
 package ir.maktabsharif.quiz24;
 
-import ir.maktabsharif.quiz24.aspect.AnalyticsAspect;
-import ir.maktabsharif.quiz24.entity.mongodb.Analytic;
-import ir.maktabsharif.quiz24.entity.mongodb.DescriptiveQuestion;
-import ir.maktabsharif.quiz24.entity.mongodb.Question;
-import ir.maktabsharif.quiz24.repository.AnalyticRepository;
-import ir.maktabsharif.quiz24.repository.DescriptiveQuestionRepository;
-import ir.maktabsharif.quiz24.service.MongoDBSequenceGeneratorService;
+import ir.maktabsharif.quiz24.entities.mongodb.Analytic;
+import ir.maktabsharif.quiz24.entities.mongodb.DescriptiveQuestion;
+import ir.maktabsharif.quiz24.entities.mongodb.Question;
+import ir.maktabsharif.quiz24.repositories.AnalyticRepository;
+import ir.maktabsharif.quiz24.repositories.DescriptiveQuestionRepository;
+import ir.maktabsharif.quiz24.services.MongoDBSequenceGeneratorService;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.Date;
 

@@ -1,8 +1,9 @@
 package ir.maktabsharif.quiz24.service;
 
-import ir.maktabsharif.quiz24.entity.mysql.Student;
-import ir.maktabsharif.quiz24.entity.mysql.User;
-import ir.maktabsharif.quiz24.repository.StudentRepository;
+import ir.maktabsharif.quiz24.entities.mysql.Student;
+import ir.maktabsharif.quiz24.entities.mysql.User;
+import ir.maktabsharif.quiz24.repositories.StudentRepository;
+import ir.maktabsharif.quiz24.services.StudentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

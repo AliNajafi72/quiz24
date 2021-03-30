@@ -1,6 +1,7 @@
 package ir.maktabsharif.quiz24.controller;
 
-import ir.maktabsharif.quiz24.entity.mysql.User;
+import ir.maktabsharif.quiz24.controllers.PagesController;
+import ir.maktabsharif.quiz24.entities.mysql.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

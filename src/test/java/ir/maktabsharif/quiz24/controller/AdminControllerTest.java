@@ -1,13 +1,14 @@
 package ir.maktabsharif.quiz24.controller;
 
-import ir.maktabsharif.quiz24.entity.mongodb.Analytic;
-import ir.maktabsharif.quiz24.entity.mysql.User;
-import ir.maktabsharif.quiz24.repository.AnalyticRepository;
-import ir.maktabsharif.quiz24.repository.StudentRepository;
-import ir.maktabsharif.quiz24.repository.TeacherRepository;
-import ir.maktabsharif.quiz24.service.AnalyticService;
-import ir.maktabsharif.quiz24.service.StudentService;
-import ir.maktabsharif.quiz24.service.TeacherService;
+import ir.maktabsharif.quiz24.controllers.AdminController;
+import ir.maktabsharif.quiz24.entities.mongodb.Analytic;
+import ir.maktabsharif.quiz24.entities.mysql.User;
+import ir.maktabsharif.quiz24.repositories.AnalyticRepository;
+import ir.maktabsharif.quiz24.repositories.StudentRepository;
+import ir.maktabsharif.quiz24.repositories.TeacherRepository;
+import ir.maktabsharif.quiz24.services.AnalyticService;
+import ir.maktabsharif.quiz24.services.StudentService;
+import ir.maktabsharif.quiz24.services.TeacherService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
