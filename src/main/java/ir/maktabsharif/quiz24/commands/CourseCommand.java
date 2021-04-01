@@ -19,7 +19,7 @@ public class CourseCommand{
     private String title;
     private Date startDate;
     private Date finishDate;
-    private Teacher teacher;
-    private List<Student> students;
-    private List<Quiz> quizzes;
+    private TeacherCommand teacher;
+    private List<StudentCommand> students;
+    private List<QuizCommand> quizzes;
 }
