@@ -7,8 +7,8 @@ import ir.maktabsharif.quiz24.repositories.AnalyticRepository;
 import ir.maktabsharif.quiz24.repositories.StudentRepository;
 import ir.maktabsharif.quiz24.repositories.TeacherRepository;
 import ir.maktabsharif.quiz24.services.AnalyticService;
-import ir.maktabsharif.quiz24.services.StudentService;
-import ir.maktabsharif.quiz24.services.TeacherService;
+import ir.maktabsharif.quiz24.services.studentservice.StudentService;
+import ir.maktabsharif.quiz24.services.teacherservice.TeacherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -39,7 +39,7 @@ class AdminControllerTest extends User {
     AnalyticRepository analyticRepository;
 
     // Services
-    TeacherService teacherService;
+    TeacherServiceImpl teacherServiceImpl;
     StudentService studentService;
     AnalyticService analyticService;
 
@@ -54,11 +54,11 @@ class AdminControllerTest extends User {
         this.teacherRepository = Mockito.mock(TeacherRepository.class);
         this.analyticRepository = Mockito.mock(AnalyticRepository.class);
 
-        this.teacherService = new TeacherService(teacherRepository);
+        this.teacherServiceImpl = new TeacherServiceImpl(teacherRepository);
         this.studentService = new StudentService(studentRepository);
         this.analyticService = new AnalyticService(analyticRepository);
 
-        this.adminController = new AdminController(this.analyticService, this.studentService, this.teacherService);
+        this.adminController = new AdminController(this.analyticService, this.studentService, this.teacherServiceImpl);
     }
 
     @Test

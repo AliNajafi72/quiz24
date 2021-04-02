@@ -5,10 +5,10 @@ import ir.maktabsharif.quiz24.entities.mongodb.MultiChoiceQuestion;
 import ir.maktabsharif.quiz24.entities.mysql.Quiz;
 import ir.maktabsharif.quiz24.exceptions.UserNotFoundException;
 import ir.maktabsharif.quiz24.helpers.MultiChoiceQuestionHelper;
-import ir.maktabsharif.quiz24.services.CourseService;
+import ir.maktabsharif.quiz24.services.courseservice.CourseService;
 import ir.maktabsharif.quiz24.services.DescriptiveQuestionService;
 import ir.maktabsharif.quiz24.services.MultiChoiceQuestionService;
-import ir.maktabsharif.quiz24.services.TeacherService;
+import ir.maktabsharif.quiz24.services.teacherservice.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,15 +22,15 @@ import java.util.List;
 @RequestMapping("/teacher")
 public class TeacherController {
 
-    TeacherService teacherService;
+    TeacherServiceImpl teacherServiceImpl;
     CourseService courseService;
     DescriptiveQuestionService descriptiveQuestionService;
     MultiChoiceQuestionService multiChoiceQuestionService;
     MultiChoiceQuestionHelper multiChoiceQuestionHelper;
 
     @Autowired
-    public TeacherController(TeacherService teacherService, CourseService courseService, DescriptiveQuestionService descriptiveQuestionService, MultiChoiceQuestionService multiChoiceQuestionService, MultiChoiceQuestionHelper multiChoiceQuestionHelper) {
-        this.teacherService = teacherService;
+    public TeacherController(TeacherServiceImpl teacherServiceImpl, CourseService courseService, DescriptiveQuestionService descriptiveQuestionService, MultiChoiceQuestionService multiChoiceQuestionService, MultiChoiceQuestionHelper multiChoiceQuestionHelper) {
+        this.teacherServiceImpl = teacherServiceImpl;
         this.courseService = courseService;
         this.descriptiveQuestionService = descriptiveQuestionService;
         this.multiChoiceQuestionService = multiChoiceQuestionService;
@@ -44,7 +44,7 @@ public class TeacherController {
 
     @GetMapping("/{teacherId}/course")
     public String coursesPage(@PathVariable String teacherId, Model model) throws Exception {
-        model.addAttribute("courses", teacherService.getTeacherAllCourses(Long.parseLong(teacherId)));
+        model.addAttribute("courses", teacherServiceImpl.getTeacherAllCourses(Long.parseLong(teacherId)));
         model.addAttribute("teacherId", teacherId);
         return "teacher-course";
     }

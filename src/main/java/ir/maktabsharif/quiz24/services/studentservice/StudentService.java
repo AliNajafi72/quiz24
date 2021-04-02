@@ -1,4 +1,4 @@
-package ir.maktabsharif.quiz24.services;
+package ir.maktabsharif.quiz24.services.studentservice;
 
 import ir.maktabsharif.quiz24.entities.mysql.Student;
 import ir.maktabsharif.quiz24.entities.mysql.UserStatus;
@@ -6,6 +6,7 @@ import ir.maktabsharif.quiz24.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 

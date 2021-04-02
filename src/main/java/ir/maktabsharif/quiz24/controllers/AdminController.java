@@ -4,8 +4,8 @@ import ir.maktabsharif.quiz24.entities.mysql.Course;
 import ir.maktabsharif.quiz24.entities.mysql.Student;
 import ir.maktabsharif.quiz24.entities.mysql.Teacher;
 import ir.maktabsharif.quiz24.services.AnalyticService;
-import ir.maktabsharif.quiz24.services.StudentService;
-import ir.maktabsharif.quiz24.services.TeacherService;
+import ir.maktabsharif.quiz24.services.studentservice.StudentService;
+import ir.maktabsharif.quiz24.services.teacherservice.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,17 +23,17 @@ public class AdminController {
 
     AnalyticService analyticService;
     StudentService studentService;
-    TeacherService teacherService;
+    TeacherServiceImpl teacherServiceImpl;
 
     @Autowired
     public AdminController(
             AnalyticService analyticService,
             StudentService studentService,
-            TeacherService teacherService
+            TeacherServiceImpl teacherServiceImpl
     ) {
         this.analyticService = analyticService;
         this.studentService = studentService;
-        this.teacherService = teacherService;
+        this.teacherServiceImpl = teacherServiceImpl;
     }
 
     @RequestMapping({"", "/", "/index"})
@@ -58,14 +58,14 @@ public class AdminController {
 
     @RequestMapping("/teacher")
     public String adminPanelTeacher(Model model) {
-        List<Teacher> teachers = teacherService.getTeachers();
+        List<Teacher> teachers = teacherServiceImpl.getTeachers();
         model.addAttribute("teachers", teachers);
         return "admin-teacher";
     }
 
     @GetMapping("teacher/verify/{id}")
     public ModelAndView teacherVerification(@PathVariable Long id) {
-        teacherService.verifyTeacher(id);
+        teacherServiceImpl.verifyTeacher(id);
         return new ModelAndView("redirect:/admin/teacher");
     }
 
@@ -90,7 +90,7 @@ public class AdminController {
         course.setTitle(title);
         course.setStartDate(startDate);
         course.setFinishDate(finishDate);
-        teacherService.addCourseForTeacher(course, Long.parseLong(id));
+        teacherServiceImpl.addCourseForTeacher(course, Long.parseLong(id));
         return new ModelAndView("redirect:/admin/teacher");
     }
 }

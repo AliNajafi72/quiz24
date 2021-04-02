@@ -1,4 +1,4 @@
-package ir.maktabsharif.quiz24.services;
+package ir.maktabsharif.quiz24.services.teacherservice;
 
 import ir.maktabsharif.quiz24.entities.mysql.Course;
 import ir.maktabsharif.quiz24.entities.mysql.Teacher;
@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.function.Supplier;
 
 @Service
-public class TeacherService{
+public class TeacherServiceImpl {
 
     TeacherRepository teacherRepository;
 
     @Autowired
-    public TeacherService(TeacherRepository teacherRepository) {
+    public TeacherServiceImpl(TeacherRepository teacherRepository) {
         this.teacherRepository = teacherRepository;
     }
 

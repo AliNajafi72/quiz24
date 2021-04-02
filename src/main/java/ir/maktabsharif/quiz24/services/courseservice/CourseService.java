@@ -1,4 +1,4 @@
-package ir.maktabsharif.quiz24.services;
+package ir.maktabsharif.quiz24.services.courseservice;
 
 import ir.maktabsharif.quiz24.entities.mysql.Course;
 import ir.maktabsharif.quiz24.entities.mysql.Quiz;

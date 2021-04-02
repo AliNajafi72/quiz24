@@ -2,8 +2,8 @@ package ir.maktabsharif.quiz24.controllers;
 import ir.maktabsharif.quiz24.entities.mysql.Student;
 import ir.maktabsharif.quiz24.entities.mysql.Teacher;
 import ir.maktabsharif.quiz24.entities.mysql.UserStatus;
-import ir.maktabsharif.quiz24.services.StudentService;
-import ir.maktabsharif.quiz24.services.TeacherService;
+import ir.maktabsharif.quiz24.services.studentservice.StudentService;
+import ir.maktabsharif.quiz24.services.teacherservice.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/signup")
 public class UserController {
 
-    TeacherService teacherService;
+    TeacherServiceImpl teacherServiceImpl;
     StudentService studentService;
 
     @Autowired
-    public UserController(TeacherService teacherService, StudentService studentService) {
-        this.teacherService = teacherService;
+    public UserController(TeacherServiceImpl teacherServiceImpl, StudentService studentService) {
+        this.teacherServiceImpl = teacherServiceImpl;
         this.studentService = studentService;
     }
 
@@ -37,7 +37,7 @@ public class UserController {
     @PostMapping("/teacher-signup")
     public ModelAndView teacherSignupHandler(@ModelAttribute Teacher teacher) {
         teacher.setStatus(UserStatus.WAITING);
-        teacherService.addTeacher(teacher);
+        teacherServiceImpl.addTeacher(teacher);
         return new ModelAndView("redirect:/");
     }
 
