@@ -58,7 +58,7 @@ public class AdminController {
 
     @RequestMapping("/teacher")
     public String adminPanelTeacher(Model model) {
-        List<Teacher> teachers = teacherServiceImpl.getTeachers();
+        List<Teacher> teachers = teacherServiceImpl.getAll();
         model.addAttribute("teachers", teachers);
         return "admin-teacher";
     }

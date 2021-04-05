@@ -1,12 +1,12 @@
 package ir.maktabsharif.quiz24.services.baseservice;
 
-import org.springframework.stereotype.Service;
+import java.util.Set;
 
 public interface BaseService<E, C> {
     E save(E entity);
     C saveCommand(C command);
-    E findById(Long l);
-    C findCommandById(Long l);
-    E findAll();
-    E deleteById(E entity);
+    E findById(Long id);
+    C findCommandById(Long id);
+    Set<E> findAll();
+    void deleteById(Long id);
 }

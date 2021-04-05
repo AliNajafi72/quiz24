@@ -37,7 +37,7 @@ public class UserController {
     @PostMapping("/teacher-signup")
     public ModelAndView teacherSignupHandler(@ModelAttribute Teacher teacher) {
         teacher.setStatus(UserStatus.WAITING);
-        teacherServiceImpl.addTeacher(teacher);
+        teacherServiceImpl.save(teacher);
         return new ModelAndView("redirect:/");
     }
 
