@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Student extends User implements Serializable {
     @ManyToMany(mappedBy = "students")
-    private List<Course> courses;
+    private List<Course> courses = new ArrayList<>();
 
     @Override
     public boolean isApproved() {

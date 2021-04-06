@@ -7,6 +7,7 @@ import ir.maktabsharif.quiz24.converters.teacherconverter.TeacherCommandToTeache
 import ir.maktabsharif.quiz24.entities.mysql.Course;
 import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -20,9 +21,9 @@ public class CourseCommandToCourseConverter implements Converter<CourseCommand, 
     private QuizCommandToQuizConverter quizCommandToQuizConverter;
 
     @Autowired
-    public CourseCommandToCourseConverter(StudentCommandToStudentConverter studentCommandToStudentConverter,
-                                          TeacherCommandToTeacherConverter teacherCommandToTeacherConverter,
-                                          QuizCommandToQuizConverter quizCommandToQuizConverter) {
+    public CourseCommandToCourseConverter(@Lazy StudentCommandToStudentConverter studentCommandToStudentConverter,
+                                          @Lazy TeacherCommandToTeacherConverter teacherCommandToTeacherConverter,
+                                          @Lazy QuizCommandToQuizConverter quizCommandToQuizConverter) {
         this.studentCommandToStudentConverter = studentCommandToStudentConverter;
         this.teacherCommandToTeacherConverter = teacherCommandToTeacherConverter;
         this.quizCommandToQuizConverter = quizCommandToQuizConverter;

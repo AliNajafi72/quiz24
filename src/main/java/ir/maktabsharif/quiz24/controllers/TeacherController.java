@@ -22,14 +22,17 @@ import java.util.List;
 @RequestMapping("/teacher")
 public class TeacherController {
 
-    TeacherServiceImpl teacherServiceImpl;
-    CourseService courseService;
-    DescriptiveQuestionService descriptiveQuestionService;
-    MultiChoiceQuestionService multiChoiceQuestionService;
-    MultiChoiceQuestionHelper multiChoiceQuestionHelper;
+    private final TeacherServiceImpl teacherServiceImpl;
+    private final CourseService courseService;
+    private final DescriptiveQuestionService descriptiveQuestionService;
+    private final MultiChoiceQuestionService multiChoiceQuestionService;
+    private final MultiChoiceQuestionHelper multiChoiceQuestionHelper;
 
     @Autowired
-    public TeacherController(TeacherServiceImpl teacherServiceImpl, CourseService courseService, DescriptiveQuestionService descriptiveQuestionService, MultiChoiceQuestionService multiChoiceQuestionService, MultiChoiceQuestionHelper multiChoiceQuestionHelper) {
+    public TeacherController(TeacherServiceImpl teacherServiceImpl,
+                             CourseService courseService, DescriptiveQuestionService descriptiveQuestionService,
+                             MultiChoiceQuestionService multiChoiceQuestionService,
+                             MultiChoiceQuestionHelper multiChoiceQuestionHelper) {
         this.teacherServiceImpl = teacherServiceImpl;
         this.courseService = courseService;
         this.descriptiveQuestionService = descriptiveQuestionService;
@@ -39,12 +42,13 @@ public class TeacherController {
 
     @GetMapping({"/", "index", ""})
     public String TeacherDashboard() {
+        //FIXME Dashboard page for teacher
         return "teacher";
     }
 
     @GetMapping("/{teacherId}/course")
-    public String coursesPage(@PathVariable String teacherId, Model model) throws Exception {
-        model.addAttribute("courses", teacherServiceImpl.getTeacherAllCourses(Long.parseLong(teacherId)));
+    public String coursesPage(@PathVariable String teacherId, Model model) {
+        model.addAttribute("courses", teacherServiceImpl.getAllCourses(Long.parseLong(teacherId)));
         model.addAttribute("teacherId", teacherId);
         return "teacher-course";
     }
@@ -57,13 +61,15 @@ public class TeacherController {
     }
 
     @GetMapping("/{teacherId}/course/{courseId}/quiz")
-    public String addNewQuiz(@PathVariable Long courseId, @PathVariable Long teacherId, Model model) {
+    public String addNewQuiz(@PathVariable String courseId, @PathVariable String teacherId, Model model) {
         model.addAttribute("quiz", new Quiz());
         return "teacher-course-new-exam";
     }
 
     @PostMapping("/{teacherId}/course/{courseId}/quiz")
-    public ModelAndView addNewQuizHandler(@PathVariable Long courseId, @PathVariable Long teacherId, @ModelAttribute Quiz quiz) {
+    public ModelAndView addNewQuizHandler(@PathVariable Long courseId,
+                                          @PathVariable Long teacherId,
+                                          @ModelAttribute Quiz quiz) {
         courseService.addCourseQuiz(courseId, quiz);
         return new ModelAndView("redirect:/teacher/" + teacherId + "/course/");
     }

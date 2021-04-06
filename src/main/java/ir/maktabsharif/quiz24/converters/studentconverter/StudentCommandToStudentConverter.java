@@ -5,6 +5,7 @@ import ir.maktabsharif.quiz24.converters.courseconverter.CourseCommandToCourseCo
 import ir.maktabsharif.quiz24.entities.mysql.Student;
 import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;

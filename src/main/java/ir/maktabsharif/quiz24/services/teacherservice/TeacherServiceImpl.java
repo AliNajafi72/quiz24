@@ -104,6 +104,7 @@ public class TeacherServiceImpl implements TeacherService {
         return courseToCourseCommandConverter.convert(course);
     }
 
+    @Transactional
     @Override
     public List<Course> getAllCourses(Long id) {
         Teacher teacher = this.findById(id);

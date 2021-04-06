@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,6 @@ public class CourseCommand{
     private Date startDate;
     private Date finishDate;
     private TeacherCommand teacher;
-    private List<StudentCommand> students;
-    private List<QuizCommand> quizzes;
+    private List<StudentCommand> students = new ArrayList<>();
+    private List<QuizCommand> quizzes = new ArrayList<>();
 }

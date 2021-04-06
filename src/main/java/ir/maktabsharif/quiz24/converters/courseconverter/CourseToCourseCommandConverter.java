@@ -7,6 +7,7 @@ import ir.maktabsharif.quiz24.converters.teacherconverter.TeacherToTeacherComman
 import ir.maktabsharif.quiz24.entities.mysql.Course;
 import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -19,9 +20,9 @@ public class CourseToCourseCommandConverter implements Converter<Course, CourseC
     private StudentToStudentCommandConverter studentToStudentCommandConverter;
 
     @Autowired
-    public CourseToCourseCommandConverter(QuizToQuizCommandConverter quizToQuizCommandConverter,
-                                          TeacherToTeacherCommandConverter teacherToTeacherCommandConverter,
-                                          StudentToStudentCommandConverter studentToStudentCommandConverter) {
+    public CourseToCourseCommandConverter(@Lazy QuizToQuizCommandConverter quizToQuizCommandConverter,
+                                          @Lazy TeacherToTeacherCommandConverter teacherToTeacherCommandConverter,
+                                          @Lazy StudentToStudentCommandConverter studentToStudentCommandConverter) {
         this.quizToQuizCommandConverter = quizToQuizCommandConverter;
         this.teacherToTeacherCommandConverter = teacherToTeacherCommandConverter;
         this.studentToStudentCommandConverter = studentToStudentCommandConverter;
@@ -38,7 +39,6 @@ public class CourseToCourseCommandConverter implements Converter<Course, CourseC
         courseCommand.setTitle(source.getTitle());
         courseCommand.setStartDate(source.getStartDate());
         courseCommand.setFinishDate(source.getFinishDate());
-        courseCommand.setTeacher(teacherToTeacherCommandConverter.convert(source.getTeacher()));
 
         source.getStudents()
                 .forEach(studentCommand -> courseCommand.getStudents().add(studentToStudentCommandConverter.convert(studentCommand)));

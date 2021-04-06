@@ -1,5 +1,6 @@
 package ir.maktabsharif.quiz24.controllers;
 
+import ir.maktabsharif.quiz24.commands.CourseCommand;
 import ir.maktabsharif.quiz24.entities.mysql.Course;
 import ir.maktabsharif.quiz24.entities.mysql.Student;
 import ir.maktabsharif.quiz24.entities.mysql.Teacher;
@@ -16,14 +17,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
-    AnalyticService analyticService;
-    StudentService studentService;
-    TeacherServiceImpl teacherServiceImpl;
+    private final AnalyticService analyticService;
+    private final StudentService studentService;
+    private final TeacherServiceImpl teacherServiceImpl;
 
     @Autowired
     public AdminController(
@@ -58,7 +60,7 @@ public class AdminController {
 
     @RequestMapping("/teacher")
     public String adminPanelTeacher(Model model) {
-        List<Teacher> teachers = teacherServiceImpl.getAll();
+        Set<Teacher> teachers = teacherServiceImpl.findAll();
         model.addAttribute("teachers", teachers);
         return "admin-teacher";
     }
@@ -71,7 +73,7 @@ public class AdminController {
 
     @GetMapping("teacher/add-course/{id}")
     public String addCourse(@PathVariable String id, Model model) {
-        model.addAttribute("course", new Course());
+        model.addAttribute("course", new CourseCommand());
         model.addAttribute("teacherId", id);
         return "admin-teacher-new-course";
     }
@@ -84,13 +86,13 @@ public class AdminController {
             @RequestParam(value = "startDate") String startDateString,
             @RequestParam(value = "finishDate") String finishDateString
     ) throws ParseException {
-        Course course = new Course();
+        CourseCommand courseCommand = new CourseCommand();
         Date startDate = new SimpleDateFormat("yy-MM-dd").parse(startDateString);
         Date finishDate = new SimpleDateFormat("yy-MM-dd").parse(finishDateString);
-        course.setTitle(title);
-        course.setStartDate(startDate);
-        course.setFinishDate(finishDate);
-        teacherServiceImpl.addCourseForTeacher(course, Long.parseLong(id));
+        courseCommand.setTitle(title);
+        courseCommand.setStartDate(startDate);
+        courseCommand.setFinishDate(finishDate);
+        teacherServiceImpl.addCourseCommand(courseCommand, Long.parseLong(id));
         return new ModelAndView("redirect:/admin/teacher");
     }
 }

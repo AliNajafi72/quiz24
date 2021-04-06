@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,9 +41,9 @@ public class Course implements Serializable {
                     @JoinColumn(name = "FK_TEACHER")
             }
     )
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-    private List<Quiz> quizzes;
+    private List<Quiz> quizzes = new ArrayList<>();
 
     public Quiz addQuiz(Quiz quiz) {
         quizzes.add(quiz);
