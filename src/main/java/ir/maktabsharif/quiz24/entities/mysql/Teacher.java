@@ -18,8 +18,9 @@ public class Teacher extends User implements Serializable {
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
 
-    public void addCourse(Course course) {
+    public Course addCourse(Course course) {
         this.courses.add(course);
         course.setTeacher(this);
+        return course;
     }
 }
