@@ -14,11 +14,9 @@ public class UserCommand {
 
     private Long id;
 
-    @Max(30)
     @NotBlank
     private String username;
 
-    @Max(60)
     @NotBlank
     private String password;
 

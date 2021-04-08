@@ -40,16 +40,17 @@ public class UserController {
     }
 
     @PostMapping("/teacher-signup")
-    public ModelAndView teacherSignupHandler(@Valid @ModelAttribute TeacherCommand teacherCommand,
+    public String teacherSignupHandler(@Valid @ModelAttribute("teacher") TeacherCommand teacherCommand,
                                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(objectError -> {
-                log.error(objectError.toString());
+            bindingResult.getAllErrors().forEach(error -> {
+                log.error(error.toString());
             });
+            return "teacher-signup";
         }
         teacherCommand.setStatus(UserStatus.WAITING);
         teacherServiceImpl.saveCommand(teacherCommand);
-        return new ModelAndView("redirect:/");
+        return "redirect:/";
     }
 
     @RequestMapping("/student")
