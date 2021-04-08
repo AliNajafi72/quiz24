@@ -3,7 +3,6 @@ package ir.maktabsharif.quiz24.entities.mysql;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -28,7 +27,7 @@ public abstract class User implements Serializable {
     private String address;
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
-    private UserStatus status;
+    private ir.maktabsharif.quiz24.entities.mysql.UserStatus status;
 
     public boolean isApproved() {
         return this.status.equals(UserStatus.APPROVED);

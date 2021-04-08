@@ -111,7 +111,6 @@ public class TeacherServiceImpl implements TeacherService {
         return teacher.getCourses();
     }
 
-
     @Override
     public Teacher verifyTeacher(Long id) {
         Teacher teacher = this.findById(id);

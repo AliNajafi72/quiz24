@@ -1,18 +1,22 @@
 package ir.maktabsharif.quiz24.controllers;
 import ir.maktabsharif.quiz24.commands.TeacherCommand;
 import ir.maktabsharif.quiz24.entities.mysql.Student;
-import ir.maktabsharif.quiz24.entities.mysql.Teacher;
 import ir.maktabsharif.quiz24.entities.mysql.UserStatus;
 import ir.maktabsharif.quiz24.services.studentservice.StudentService;
 import ir.maktabsharif.quiz24.services.teacherservice.TeacherServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/signup")
+@Slf4j
 public class UserController {
 
     private final TeacherServiceImpl teacherServiceImpl;
@@ -36,7 +40,13 @@ public class UserController {
     }
 
     @PostMapping("/teacher-signup")
-    public ModelAndView teacherSignupHandler(@ModelAttribute TeacherCommand teacherCommand) {
+    public ModelAndView teacherSignupHandler(@Valid @ModelAttribute TeacherCommand teacherCommand,
+                                             BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(objectError -> {
+                log.error(objectError.toString());
+            });
+        }
         teacherCommand.setStatus(UserStatus.WAITING);
         teacherServiceImpl.saveCommand(teacherCommand);
         return new ModelAndView("redirect:/");
